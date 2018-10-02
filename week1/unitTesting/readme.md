@@ -1,6 +1,8 @@
 Testing File Example: 
 
-Sum
+
+
+Function: Sum
 take some input 2 numbers
 return back the 2 numbers added together
 
@@ -16,3 +18,5 @@ sum(true, false) expect it to give NaN
 sum(5/4, 67) -same test case as sum(2, 3)
 let num1 = something, num2 = something
 also are the same as above but depends on what num1 is & num2 is
+
+Testing function runs to see if it works

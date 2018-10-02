@@ -1,5 +1,9 @@
 console.log('Function to sum 2 things');
 
+// testing undefine same as null and NaN
+console.log(undefined == null);
+console.log(undefined == NaN);
+
 function sum(value1, value2 = 0) {
     let number1 = parseFloat(value1);
     let number2 = parseFloat(value2);
@@ -22,4 +26,13 @@ console.log(`Try sum('foo', 'bar') expect it to give us NaN:`, sum('foo','bar'))
 
 // changed value2 to value2 = 0)
 console.log(`Try sum(3) expect it to give us 3:`, sum(3));
+
+// works because js ignores 3 value
+console.log(`Try sum(2, 3, 5) expect it to give us undefined:`, sum(2, 3, 5));
+
+// can't do this, breaks
+// console.log(`Try sum(true, false) expect it to give us 0:`, sum(true, false);
+
+// doesn't work 
+// console.log(`Try sum() expect it to give us 0:`, sum();
 
