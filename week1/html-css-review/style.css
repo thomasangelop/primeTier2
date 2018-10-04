@@ -1,0 +1,21 @@
+/* id takes over */
+#content {
+    background: red;
+}
+
+/* Class anme is more specific than HTML tag name */
+.blue {
+    background: blue;
+}
+
+/* Pretty much least specific is html tag*/
+body{
+    width: 80%;
+    margin: auto;
+    background: rgb(122, 122, 196);
+}
+
+/* Descendant selector only affects 'a' inside of 'nav'*/
+nav a{
+    color: white;
+}
