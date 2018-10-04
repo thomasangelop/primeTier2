@@ -38,6 +38,8 @@ function showAllCats(){
     $('#cats').empty();
     for (let cat of catArray){
         let color = cat.color;
-        $('#cats').append(`<p style="color: ${color}">${cat.name} is ${cat.color}.</p>`)
+        //$('#cats').append(`<p style="color: ${color}">${cat.name} is ${cat.color}.</p>`)
+        $('#cats').append(`<p>${cat.name} is ${cat.color}.</p>`).css('color', color);
+    
     }
 }
