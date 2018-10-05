@@ -1,0 +1,44 @@
+.box {
+    /* Can also make the children's size change to fill space */
+    flex: 1 0 300px;
+    background-color: blue;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  .medium {
+    height: 150px;
+    line-height: 150px;
+  }
+  
+  .short {
+    height: 75px;
+    line-height: 75px;
+  }
+  
+  .tall {
+    height: 300px;
+    line-height: 300px;
+  }
+  
+  .container {
+    background-color: grey;
+  
+    /* Says to use Flex Box 
+       https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;  
+  
+    /* Line Wrap: wrap, no-wrap, wrap-reverse */
+    flex-wrap: wrap;
+  
+    /* Horizontal positioning: flex-start, flex-end, center,
+          space-around, space-between, space-evenly */
+    justify-content: center;
+    
+    /* Vertical positioning: flex-start, flex-end, center,
+          stretch, baseline */
+    align-items: center;
+  }
