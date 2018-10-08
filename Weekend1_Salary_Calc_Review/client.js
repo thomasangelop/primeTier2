@@ -16,6 +16,14 @@ function handleReady() {
 
 function addClickListeners() {
     $('#submitBtn').on('click', handleSubmit);
+    $('#tableContent').on('click', '.deleteBtn', handleDelete);
+}
+
+function handleDelete() {
+    console.log('clicked delete');
+    //delete the thing I clicked on 
+    $(this).parent().parent().remove();
+    
 }
 
 function handleSubmit() {
@@ -46,6 +54,7 @@ function handleSubmit() {
       <td>${idNumber}</td>
       <td>${title}</td>
       <td>${salary}</td>
+      <td><button class="deleteBtn">Delete</button></td>
     </tr>
     `;
 
