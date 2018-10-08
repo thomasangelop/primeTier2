@@ -71,6 +71,13 @@ function calculateAndAppendMonthlySalary() {
     $('#total').empty();
 
     //append to DOM
-    $('#total').append(`<p> Total Monthly Salaries: ${monthlyAmount}</p>`);
+    $('#total').append(`<p id="monthlyCost"> Total Monthly Salaries: ${monthlyAmount}</p>`);
+
+    // if over $20k make color ???
+    //otherwise do not? 
+    if(monthlyAmount >= 20000){
+        $('#monthlyCost').addClass('warning');
+
+    }
 
 }
