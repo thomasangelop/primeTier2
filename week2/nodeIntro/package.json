@@ -1,0 +1,17 @@
+{
+  "name": "nodeIntro",
+  "version": "1.0.0",
+  "description": "node intro code",
+  "main": "hello.js",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node hello.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
