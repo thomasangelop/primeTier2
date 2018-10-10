@@ -4,7 +4,34 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('jQuery ready');
+    $('#btn-add').on('click', addMovie);
     getAllMovies();
+}
+
+function  addMovie(event) {
+    event.preventDefault();
+    let newTitle = $('#in-title').val();
+    let newGenre = $('#in-genre').val();
+    console.log(`Adding movie title: ${newTitle} genre: ${newGenre}.`);
+
+    //send the movie to the server using Ajax!
+    // Use a POST request to add something to the sever
+    $.ajax({
+        method: 'POST',
+        url: '/movies',
+        data: {
+            title: newTitle,
+            genre: newGenre,
+        }
+    }).then(function(response){
+        console.log('Added the movie');
+        // Ask the server for all the movies again and update DOM
+        getAllMovies();
+    }).catch(function(error){
+        console.log('Error adding to sever');
+        
+    })
+    
 }
 
 function getAllMovies() {
@@ -21,6 +48,8 @@ function getAllMovies() {
         console.log('reponse:', response);
         // the response is the array of movies
         showAllMovies(response);
+        // Clear inputs
+        $('input').val('');
     }) 
     // .catch happens if server request does not come back successful
     .catch( function (error) {
@@ -35,6 +64,7 @@ function getAllMovies() {
 }
 
 function showAllMovies(movieArray){
+    $('#movies').empty();
     for (let movie of movieArray){
         $('#movies').append(`
         <tr>
