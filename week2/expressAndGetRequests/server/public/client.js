@@ -38,7 +38,7 @@ function showAllMovies(movieArray){
     for (let movie of movieArray){
         $('#movies').append(`
         <tr>
-          <td>${movie.name}</td>
+          <td>${movie.title}</td>
           <td>${movie.genre}</td>
         </tv>
         `)
