@@ -27,6 +27,8 @@ function  addMovie(event) {
         console.log('Added the movie');
         // Ask the server for all the movies again and update DOM
         getAllMovies();
+        // Clear inputs
+        $('input').val('');
     }).catch(function(error){
         console.log('Error adding to sever');
         
@@ -48,8 +50,6 @@ function getAllMovies() {
         console.log('reponse:', response);
         // the response is the array of movies
         showAllMovies(response);
-        // Clear inputs
-        $('input').val('');
     }) 
     // .catch happens if server request does not come back successful
     .catch( function (error) {
