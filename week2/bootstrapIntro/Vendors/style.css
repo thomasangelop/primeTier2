@@ -1,0 +1,14 @@
+.card{
+    margin-bottom: 12px;
+}
+
+.card-header{
+    background-color: black;
+    color: white;
+}
+
+.card-footer{
+    background-color: grey;
+    color: white;
+    font-family: courier;
+}

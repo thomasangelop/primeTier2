@@ -29,11 +29,18 @@ function readyNow(){
     for(cat of kitties){
     //append to this element
     let outputString = `
-    <div class="col-2" >
-        <h3>${cat.name}</h3>
-        <p>${cat.breed}</p>
-        <p>${cat.age}</p>
+    <div class="col-4" >
+        <div class="card">
+            <div class="card-header"><strong>${cat.name}</strong></div>
+            <div class="card-body">Breed: ${cat.breed}</div>
+            <div class="card-footer">Age: ${cat.age}</div>
+        </div>
     </div>`;
     el.append(outputString );
     }
 }
+
+        //stub data 
+        // <h3>${cat.name}</h3>
+        // <p>${cat.breed}</p>
+        // <p>${cat.age}</p>
