@@ -52,6 +52,22 @@ app.get('/songs', (req, res) => {
 });
 
 //set up POST route to add a new song to the database
+app.post('/songs', (req, res) => {
+    const newSong = req.body;
+    const sqlText = `INSERT INTO "songs" (rank, artist, track, published)
+    VALUES ($1, $2, $3, $4)`;
+    // let sql sanitize your inputs 
+    pool.query(sqlText, [newSong.rank, newSong.artist, newSong.track, newSong.published])
+    .then((result) => {
+        console.log(`Added snog to the database`, newSong);
+        res.sendStatus(201)
+        
+    }).catch( (error) =>{
+        console.log(`Error making database query ${sqlText}`, error);
+        res.sendStatus(500); // Good server always respondeds
+            
+    })
+})
 
 const port = process.env.PORT || 5000;
 app.listen( port, () => {
