@@ -15,3 +15,26 @@ const pool = new Pool({
 });
 
 
+pool.on('connect', () => {
+    console.log('Connected to the database');
+});
+
+pool.on('error', (error) => {
+    console.log('Error with database', error);
+});
+
+// Setup express as usual 
+const app = express();
+
+// Setup body-parser 
+app.use(bodyParser.urlencoded( { extended:true } ) );
+app.use(bodyParser.json( ) );
+
+// Static files
+app.use( express.static('public/static') );
+
+const port = process.env.PORT || 5000;
+app.listen( port, () => {
+    console.log('up and running on port', port);
+    
+} )
