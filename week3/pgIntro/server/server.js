@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded( { extended:true } ) );
 app.use(bodyParser.json( ) );
 
 // Static files
-app.use( express.static('public/static') );
+app.use( express.static('server/public') );
 
 //set GET route to get all songs from database
 app.get('/songs', (req, res) => {
@@ -68,6 +68,53 @@ app.post('/songs', (req, res) => {
             
     })
 })
+
+// Setup DELETE to remove a song from the database
+// We are using a request parameter (req.params) to identify
+// the song we want to delete. We expect this will be an id
+// from the database. 
+app.delete('/songs/:id', (req, res) => {
+    let reqId = req.params.id
+    console.log('delete request', reqId);
+    let sqlText = 'DELETE FROM songs WHERE id=$1;';
+    pool.query(sqlText, [reqID])
+      .then( (result) =>{
+        console.log('Song deleted');
+        res.sendStatus(200);
+      }).catch( (error) =>{
+        console.log(`Error making database delete ${sqlText}`, error);
+        res.sendStatus(500); // Good server always respondeds
+            
+    })
+})
+
+//change rank on song 
+app.put('/songs/rank/:id', (req, res) => {
+    let songId = req.params.id;
+    //Direction will come from the client and say up or down
+    let direction = req.body.direction;
+    let sqlText = '';
+
+    if (direction === 'up'){
+        sqlText = `UPDATE songs SET rank=rank-1 WHERE id=$1`;
+    } else if ( direction === 'down'){
+        sqlText = `UPDATE songs SET rank=rank+1 WHERE id=$1`;
+    } else {
+        res.sendStatus(500);
+        return;
+    }
+
+    pool.query(sqlText, [songId])
+    .then( (result) => {
+        res.sendStatus(200);
+    })
+    .catch((error) =>{
+        console.log(`Error making database delete ${sqlText}`, error);
+        res.sendStatus(500);
+    })
+})
+
+
 
 const port = process.env.PORT || 5000;
 app.listen( port, () => {
